@@ -1,0 +1,22 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+
+    <aura:attribute name="contactRecord" type="Object"/>
+    <aura:attribute name="recordId" type="String"/>
+	
+    <force:recordData aura:id="recordHandler2"
+      recordId="{!v.recordId}"
+      layoutType="FULL"
+      targetFields="{!v.contactRecord}"
+      />
+
+    <!-- Display a header with details about the record -->
+    <div class="slds-page-header" role="banner">
+        <p class="slds-text-heading_label">Read-Only Contact Information Panel</p>
+        <h1 class="slds-page-header__title slds-m-right_small
+            slds-truncate slds-align-left">First Name: {!v.contactRecord.FirstName}</h1>
+        <h1 class="slds-page-header__title slds-m-right_small
+            slds-truncate slds-align-left">Last Name: {!v.contactRecord.LastName}</h1>
+        <h1 class="slds-page-header__title slds-m-right_small
+            slds-truncate slds-align-left">Email: {!v.contactRecord.Email}</h1>
+    </div>
+</aura:component>
