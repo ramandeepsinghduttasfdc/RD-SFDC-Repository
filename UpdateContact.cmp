@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="contactRecord" type="Object"/>
+    <aura:attribute name="recordId" type="String"/>
+	
+    <force:recordData aura:id="recordHandler"
+      recordId="{!v.recordId}"
+      layoutType="FULL"
+      targetFields="{!v.contactRecord}"
+      mode="EDIT"
+      />
+	
+    <div class="slds-page-header" role="banner">
+        <p class="slds-text-heading_label">Update Contact Panel</p>
+    </div>
+    
+    <lightning:input aura:id="recordFirstName" name="recordFirstName" label="First Name"
+                  value="{!v.contactRecord.FirstName}" required="true"/>
+    <lightning:input aura:id="recordLastName" name="recordLastName" label="Last Name"
+                  value="{!v.contactRecord.LastName}" required="true"/>
+    <lightning:input aura:id="recordEmail" name="recordEmail" label="Email Name"
+                  value="{!v.contactRecord.Email}"/>
+
+     <lightning:button label="Update" onclick="{!c.handleContactUpdate}"
+               variant="brand" class="slds-m-top_medium"/>
+</aura:component>
