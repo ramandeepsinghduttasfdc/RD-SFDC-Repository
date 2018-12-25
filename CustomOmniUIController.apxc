@@ -1,0 +1,6 @@
+public class CustomOmniUIController {
+	@AuraEnabled
+    public static Case getCaseDetails(String caseId) {
+        return [SELECT Id, CaseNumber, Account.Name, Subject FROM Case where Id=:caseId];
+    }
+}
