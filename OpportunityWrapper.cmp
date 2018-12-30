@@ -1,0 +1,46 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="OpportunityWrapController">
+    <aura:attribute name="oppParameters" type="Map" default="{ oppName: '', oppType: 'Existing Customer - Upgrade'}" />
+    <aura:attribute name="oppCloseDate" type="Date"/>
+    <aura:attribute name="result" type="String"/>
+    <aura:attribute name="issearching" type="Boolean" default="false"/>
+    <aura:attribute name="searchResult" type="sobject[]"/>
+    <aura:attribute name="errorMessage" type="String"/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <!-- / CREATE NEW OPPORTUNITY -->
+    <div aria-labelledby="newoppform">
+        <!-- / BOXED AREA -->
+        <fieldset class="slds-box slds-theme--default slds-container--small">
+        <legend id="newoppform" class="slds-text-heading--small slds-p-vertical--medium">
+        	New Order!
+        </legend>
+  
+        <!-- CREATE NEW OPPORTUNITY FORM -->
+        <form class="slds-form--stacked">          
+            <lightning:input aura:id="oppform" label="Order Name"
+                             name="oppname"
+                             value="{!v.oppParameters.oppName}"
+                             required="true"/>
+            <lightning:select name="selectType" label="Type of Order" required="true" value="{!v.oppParameters.oppType}">
+                <option value="">Please Select One..</option>
+                <option value="Existing Customer - Upgrade">Upgrade</option>
+                <option value="Existing Customer - Replacement">Replacement</option>
+                <option value="Existing Customer - Downgrade">Downgrade</option>
+            </lightning:select>
+            <c:CustomLookup objectAPIName="Campaign" IconName="standard:Campaign" selectedRecord="{!v.selectedLookUpRecord}" label="Do you have a Campaign"/>
+            <lightning:input 
+                    type="date" 
+                    name="Opp Close Date" 
+                    label="When shall we Start Processing"
+                    value="{!v.oppCloseDate}"/>
+            <lightning:button label="Place Order"
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.clickCreate}"/>
+        </form>
+        <!-- / CREATE NEW OPPORTUNITY FORM -->
+  
+      </fieldset>
+      <!-- / BOXED AREA -->
+    </div>
+    <!-- / CREATE NEW OPPORTUNITY -->
+</aura:component>
