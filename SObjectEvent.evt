@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="We will pass Listed sobject to Parent Component">
+    <aura:attribute name="recordByEvent" type="sObject"/>
+</aura:event>
